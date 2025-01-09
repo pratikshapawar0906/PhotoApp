@@ -1,0 +1,69 @@
+/* Hero.css */
+.hero-container {
+  padding: 2.5rem 0; /* Equivalent to py-10 (10px on smaller screens, 20px on larger screens) */
+  background: linear-gradient(to right, #eeeeee, #333333); /* Gradient from gray-00 to gray-950 */
+  padding-bottom: 10rem;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.hero-heading {
+  font-size: 3rem; /* Equivalent to text-2xl */
+  font-weight: bold;
+  background: linear-gradient(to right, #666666, #000000); /* Gradient from gray-600 to black */
+  -webkit-background-clip: text;
+  color: transparent;
+  padding: 0 5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 1rem; /* Equivalent to text-xs */
+  background: linear-gradient(to right, #000000, #666666); /* Gradient from black to gray-600 */
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 1.25rem; /* Equivalent to md:text-xl */
+  margin-bottom: 2rem;
+  font-weight: bolder;
+}
+
+.hero-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-button {
+  background: linear-gradient(to right, #333333, #000000); /* Gradient from gray-800 to black */
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem; /* Equivalent to text-lg */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-button:hover {
+  background: linear-gradient(to bottom right, #333333, #000000);
+}
+
+.hero-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(169, 169, 169, 0.5);
+}
+
+.hero-image-container {
+  margin-top: 1rem;
+  padding-top: 5rem; /* Equivalent to md:pt-10 */
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem; /* Equivalent to rounded-xl */
+  object-fit: cover;
+  object-position: center;
+}

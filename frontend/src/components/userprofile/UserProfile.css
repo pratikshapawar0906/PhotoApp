@@ -1,0 +1,25 @@
+.user-profile-container{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.user-profile-dp{
+    width: 15%;
+    height: 150px;
+}
+
+.user-profile-dp > img{
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+}
+
+.user-profile-content{
+    width: 85%;
+    height: 200px;
+    
+}
+

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import "./Navbar.css";
+import logo from '../../assets/camera-logo.png'
 
 function Navbar() {
   // State to track if user is logged in
@@ -43,7 +44,7 @@ function Navbar() {
     <div className="navbar mx-5">
       <div className="navbar-left">
         <img
-          src="/theshutterstory-logo.svg"
+          src={logo}
           alt="logo"
           width={50}
           height={50}

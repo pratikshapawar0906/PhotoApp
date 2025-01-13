@@ -33,7 +33,7 @@ const Categories = () => {
     {
       id: 5,
       categoryName: "Kids",
-      categoryImage: Category6,
+      categoryImage: Category5,
     },
     {
       id: 6,

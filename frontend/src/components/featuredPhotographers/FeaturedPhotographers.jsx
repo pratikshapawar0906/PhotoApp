@@ -1,5 +1,17 @@
 import React from "react";
-import "./FeaturedPhotographers.css"
+import "./FeaturedPhotographers.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules"; // Correct import for Swiper modules
+import "swiper/css"; // Base styles
+import { Autoplay } from "swiper/modules";
+import featured1 from "../../assets/featured/fatured1.png";
+import featured2 from "../../assets/featured/fatured2.png";
+import featured3 from "../../assets/featured/fatured3.png";
+import featured4 from "../../assets/featured/fatured4.png";
+import featured5 from "../../assets/featured/fatured5.png";
+import featured6 from "../../assets/featured/fatured6.png";
+import featured7 from "../../assets/featured/fatured7.png";
+import featured8 from "../../assets/featured/fatured8.png";
 
 const FeaturedPhotographers = () => {
   const teamMembers = [
@@ -8,75 +20,93 @@ const FeaturedPhotographers = () => {
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_1.jpg", // Replace with actual image paths
+      imageUrl: featured1,
     },
     {
       name: "Abhi Mishra",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_2.jpg",
+      imageUrl: featured2,
     },
     {
       name: "Samaira Dixit",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_3.jpg",
+      imageUrl: featured3,
     },
     {
       name: "Samaira Dixit",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_4.jpg",
+      imageUrl: featured4,
     },
     {
       name: "Samaira Dixit",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_5.jpg",
+      imageUrl: featured5,
     },
     {
       name: "Samaira Dixit",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_6.jpg",
+      imageUrl: featured6,
     },
     {
       name: "Samaira Dixit",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_7.jpg",
+      imageUrl: featured7,
     },
     {
       name: "Samaira Dixit",
       role: "Photographer",
       studio: "Pixelbee Studios",
       position: "DOP",
-      imageUrl: "path_to_image_8.jpg",
+      imageUrl: featured8,
     },
   ];
+
   return (
-    <>
-    <div className="team-container">
-      {teamMembers.map((member, index) => (
-        <div key={index} className="team-card">
-          <img src={member.imageUrl} alt={member.name} className="team-image" />
-          <div className="team-info">
-            <h3>{member.name}</h3>
-            <p>{member.studio}</p>
-            <p className="role">{member.role}</p>
-            <p className="position">{member.position}</p>
-          </div>
-        </div>
-      ))}
+    <div className="carousel-container">
+      <Swiper
+        modules={[Autoplay]}
+        spaceBetween={20}
+        slidesPerView={3}
+        autoplay={{ delay: 3000, disableOnInteraction: false }} // Automate the swiper
+        loop={true} // Enable infinite scrolling
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 5 },
+        }}
+      >
+        {teamMembers.map((member, index) => (
+          <SwiperSlide key={index}>
+            <div className="team-card">
+              <img
+                src={member.imageUrl}
+                alt={member.name}
+                className="team-image"
+              />
+              <div className="team-info">
+                <h3>{member.name}</h3>
+                <p>{member.studio}</p>
+                <p className="role">{member.role}</p>
+                <p className="position">{member.position}</p>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
-    </>
-  )
+  );
 };
 
 export default FeaturedPhotographers;

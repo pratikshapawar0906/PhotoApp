@@ -8,7 +8,7 @@ const HightlightedPhotographerCard = ({ photographer }) => {
   return (
     <div className="photographer-card-container">
       <div className="photographer-card-img-container">
-        <img src={bg} alt="Card background" />
+        <img src={bg} alt="Card background" className="img-fluid"  width={285} />
       </div>
       <div className="photographer-card-info-container">
         <div className="photographer-card-dp-container">

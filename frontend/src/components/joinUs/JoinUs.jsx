@@ -24,7 +24,7 @@ const JoinUs = () => {
         </div>
         <p className="crew-text">
           Are you a photographer?{' '}
-          <a href="/join-crew" className="crew-link">
+          <a href="/JoinUsForm" className="crew-link">
             Be a part of Crew
           </a>
         </p>

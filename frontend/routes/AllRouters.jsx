@@ -4,8 +4,9 @@ import HomePage from "../src/pages/homepage/HomePage";
 import GalleryPage from "../src/pages/gallerypage/GalleryPage";
 import Signup from "../src/pages/signup/Signup";
 import Login from "../src/pages/login/Login";
-import JoinUs from "../src/components/joinUs/JoinUs";
 import PhotographerDetails from "../src/pages/photographerDetails/PhotographerDetails";
+import JoinUsForm from "../src/pages/joinUsForm/JoinUsForm";
+import Photographalogin from "../src/pages/joinUsForm/Phoyographalogin";
 
 const AllRouters = () => {
   return (
@@ -18,7 +19,9 @@ const AllRouters = () => {
           {/* other routes */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/joinUs" element={<JoinUs />} />
+          <Route path="/joinUsForm" element={<JoinUsForm />} >
+             <Route path="/joinUsForm/login" element={< Photographalogin/>}/>
+          </Route>
           <Route
             path="/photographerDetails"
             element={<PhotographerDetails />}

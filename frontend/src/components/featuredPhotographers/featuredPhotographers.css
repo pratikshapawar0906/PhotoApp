@@ -1,45 +1,56 @@
+/* FeaturedPhotographers.css */
 .carousel-container {
-  width: 90%;
-  margin: 0 auto;
+  padding: 20px;
 }
 
 .team-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: #fff;
+  position: relative;
+  overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .team-image {
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  height: 200px;
-  width: 200px;
+  display: block;
+  object-fit: cover;
+  height: 300px;
+}
+
+.team-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: #fff;
+  padding: 15px;
+  text-align: left;
 }
 
 .team-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin: 0 0 5px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .team-info p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #555;
+  margin: 2px 0;
+  font-size: 14px;
 }
 
 .role {
-  font-weight: bold;
-  color: #333;
+  font-style: italic;
+  opacity: 0.8;
 }
 
 .position {
-  font-style: italic;
-  color: #777;
+  font-weight: bold;
 }

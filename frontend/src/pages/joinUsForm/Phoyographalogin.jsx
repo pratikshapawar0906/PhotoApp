@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../../util";
-// import "./login.css";
+
 
 const PhotographerLogin = () => {
   const [loginData, setLoginData] = useState({
@@ -38,12 +38,11 @@ const PhotographerLogin = () => {
       });
 
       const result = await response.json();
-      const { success, message } = result;
-
+      const { success, message } = result; 
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/dashboard"); // Navigate to the photographer's dashboard
+          navigate("/photographerDetails"); 
         }, 1000);
       } else {
         handleError(message);

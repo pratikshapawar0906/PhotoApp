@@ -41,7 +41,7 @@ function Navbar() {
     },
   ];
   return (
-    <div className="navbar mx-5">
+    <div className="navbar px-5 sticky-top bg-light">
       <div className="navbar-left">
         <img
           src={logo}

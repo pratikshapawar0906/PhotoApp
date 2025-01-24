@@ -19,13 +19,9 @@ const AllRouters = () => {
           {/* other routes */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/joinUsForm" element={<JoinUsForm />} >
-             <Route path="/joinUsForm/login" element={< Photographalogin/>}/>
-          </Route>
-          <Route
-            path="/photographerDetails"
-            element={<PhotographerDetails />}
-          />
+          <Route path="/joinUsForm" element={<JoinUsForm />} ></Route>
+          <Route path="/joinUsForm/login" element={< Photographalogin/>}/>
+          <Route  path="/photographerDetails"  element={<PhotographerDetails />}/>
         </Routes>
       </BrowserRouter>
     </>

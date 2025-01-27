@@ -38,11 +38,12 @@ const PhotographerLogin = () => {
       });
 
       const result = await response.json();
-      const { success, message } = result; 
+      const { success, message,token  } = result; 
       if (success) {
+        localStorage.setItem("token", token);
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/photographerDetails"); 
+          navigate("/profile"); 
         }, 1000);
       } else {
         handleError(message);

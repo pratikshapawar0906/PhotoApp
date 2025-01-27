@@ -7,6 +7,8 @@ import Login from "../src/pages/login/Login";
 import PhotographerDetails from "../src/pages/photographerDetails/PhotographerDetails";
 import JoinUsForm from "../src/pages/joinUsForm/JoinUsForm";
 import Photographalogin from "../src/pages/joinUsForm/Phoyographalogin";
+import Profile from "../src/pages/profile/Newprofile";
+
 
 const AllRouters = () => {
   return (
@@ -21,6 +23,7 @@ const AllRouters = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/joinUsForm" element={<JoinUsForm />} ></Route>
           <Route path="/joinUsForm/login" element={< Photographalogin/>}/>
+          <Route path="/profile" element={<Profile />} />
           <Route  path="/photographerDetails"  element={<PhotographerDetails />}/>
         </Routes>
       </BrowserRouter>

@@ -15,6 +15,10 @@ const photographerSchema = new mongoose.Schema({
             type: String, 
             required: true 
         },
+    profile: {
+           bio: { type: String },
+           age: { type: Number },
+        },
 });
   
 const Photographer = mongoose.model("Photographer", photographerSchema);

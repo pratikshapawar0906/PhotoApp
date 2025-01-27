@@ -46,3 +46,12 @@ exports.login1=async (req, res) => {
       res.status(500).json({ message: "Server error" });
     }
 };
+
+exports.profiles =async (req, res) => {
+  try {
+    const users = await Photographer.find({}, { password: 0 }); // Exclude password
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching profiles", error: err.message });
+  }
+};

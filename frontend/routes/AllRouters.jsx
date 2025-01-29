@@ -9,7 +9,6 @@ import JoinUsForm from "../src/pages/joinUsForm/JoinUsForm";
 import Photographalogin from "../src/pages/joinUsForm/Phoyographalogin";
 import Profile from "../src/pages/profile/Newprofile";
 import  JoinUsFormLayout from "../src/pages/joinusformLayout/joinLayout"
-import CreateProfile from '../src/pages/profile/creteProfile'
 import Register from "../src/pages/joinUsForm/register";
 const AllRouters = () => {
   return (
@@ -29,7 +28,7 @@ const AllRouters = () => {
           <Route index element={<JoinUsForm />} /> {/* Default JoinUsForm */}
           <Route path="login" element={<Photographalogin />} />
           <Route path="register" element={<Register />} />
-          <Route path="create-profile" element={<CreateProfile />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

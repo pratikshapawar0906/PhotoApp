@@ -16,6 +16,8 @@ const Register = () => {
             name: username,  // Fixed "name" issue
             email,
             password,
+            profilePicture, // Optional: if you allow the user to upload a profile picture
+            bio, // Optional: if you allow the user to add a bio
         };
 
         try {

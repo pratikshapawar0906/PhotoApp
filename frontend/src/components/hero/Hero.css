@@ -42,6 +42,7 @@
   background: linear-gradient(to right, #333333, #000000); /* Gradient from gray-800 to black */
   color: white;
   padding: 1rem 2rem;
+  width: 200px;
   border-radius: 0.5rem;
   font-size: 1.125rem; /* Equivalent to text-lg */
   cursor: pointer;

@@ -1,99 +1,62 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import { handleError, handleSuccess } from "../../util";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './phoyographa.css'; // Import the CSS file
 
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-const PhotographerLogin = () => {
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
-  });
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8000/api/login1', { email, password });
 
-  const navigate = useNavigate();
+            // If login is successful, store the token and userId in localStorage
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('userId', response.data.userId);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLoginData((prev) => ({ ...prev, [name]: value }));
-  };
+            // Check if user is already registered and redirect to their profile
+            if (response.data.userId) {
+                navigate(`/profile/${response.data.userId}`); // Redirect to the profile page with the user's ID
+            } else {
+                // In case the userId is missing or something else goes wrong
+                setError('User profile not found.');
+            }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+        } catch (error) {
+            // Handle any login errors
+            setError('Invalid credentials or error during login');
+        }
+    };
 
-    const { email, password } = loginData;
-
-    // Validate required fields
-    if (!email || !password) {
-      return handleError("Email and Password are required.");
-    }
-
-    try {
-      const url = "http://localhost:8000/api/login1";
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const result = await response.json();
-      const { success, message,token  } = result; 
-      if (success) {
-        localStorage.setItem("token", token);
-        handleSuccess(message);
-        setTimeout(() => {
-          navigate("/profile"); 
-        }, 1000);
-      } else {
-        handleError(message);
-      }
-    } catch (error) {
-      handleError("An error occurred while logging in. Please try again.");
-      console.error(error);
-    }
-  };
-
-  return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2 className="login-title">Photographer Login</h2>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={loginData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={loginData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className="btn-login">
-            Log In
-          </button>
-        </form>
-        <p className="login-footer">
-          Don't have an account? <a href="/joinUsForm">Sign Up</a>
-        </p>
-        <ToastContainer />
-      </div>
-    </div>
-  );
+    return (
+        <div className="login-container">
+            <div className="login-box">
+                <h2>Login</h2>
+                {error && <p className="error-message">{error}</p>}
+                <form onSubmit={handleLogin}>
+                    <input 
+                        type="email" 
+                        placeholder="Email" 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        required 
+                    />
+                    <input 
+                        type="password" 
+                        placeholder="Password" 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        required 
+                        style={{ margin: '10px 0px' }}
+                        autoComplete="current-password"
+                    />
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    );
 };
 
-export default PhotographerLogin;
+export default Login;

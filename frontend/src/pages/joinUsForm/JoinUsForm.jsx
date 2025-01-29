@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {   useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../../util";
 import "../signup/signup.css";
+
 
 
 const JoinUsForm = () => {
@@ -81,6 +82,7 @@ const JoinUsForm = () => {
           Already have an account? <a href="/joinUsForm/login">Login</a>
         </p>
         <ToastContainer />
+       
       </div>
     </div>
   );

@@ -8,25 +8,31 @@ import PhotographerDetails from "../src/pages/photographerDetails/PhotographerDe
 import JoinUsForm from "../src/pages/joinUsForm/JoinUsForm";
 import Photographalogin from "../src/pages/joinUsForm/Phoyographalogin";
 import Profile from "../src/pages/profile/Newprofile";
-
-
+import  JoinUsFormLayout from "../src/pages/joinusformLayout/joinLayout"
+import CreateProfile from '../src/pages/profile/creteProfile'
+import Register from "../src/pages/joinUsForm/register";
 const AllRouters = () => {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/user-profile" element={<GalleryPage />} />
+      <Routes>
+        {/* Main Routes */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/user-profile" element={<GalleryPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/photographerDetails" element={<PhotographerDetails />} />
+        <Route path="profile/:userId" element={<Profile />} />
 
-          {/* other routes */}
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/joinUsForm" element={<JoinUsForm />} ></Route>
-          <Route path="/joinUsForm/login" element={< Photographalogin/>}/>
-          <Route path="/profile" element={<Profile />} />
-          <Route  path="/photographerDetails"  element={<PhotographerDetails />}/>
-        </Routes>
-      </BrowserRouter>
+        {/* Nested Routes for JoinUsForm */}
+        <Route path="/joinUsForm" element={<JoinUsFormLayout />}>
+          <Route index element={<JoinUsForm />} /> {/* Default JoinUsForm */}
+          <Route path="login" element={<Photographalogin />} />
+          <Route path="register" element={<Register />} />
+          <Route path="create-profile" element={<CreateProfile />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </>
   );
 };

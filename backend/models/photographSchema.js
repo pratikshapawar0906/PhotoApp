@@ -15,9 +15,6 @@ const photographerSchema = new mongoose.Schema({
             type: String, 
             required: true 
         },
-    profile: {
-            type: String ,
-        },
     profilePicture: {
          type: String,
           default: 'defaultProfilePic.jpg' 
@@ -25,7 +22,11 @@ const photographerSchema = new mongoose.Schema({
        
     bio:{ 
           type: String ,
-    }
+          default: ''
+    },
+    photos: { 
+        type: [String], 
+        default: [] },
 });
   
 const Photographer = mongoose.model("Photographer", photographerSchema);

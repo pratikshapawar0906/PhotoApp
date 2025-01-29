@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const multer = require('multer');
+const path = require("path");
 const cloudinary = require('cloudinary');
 const userRouter = require("./routes/userRouter");
 const cors = require("cors");
@@ -34,11 +35,24 @@ const storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + uniqueSuffix+file.originalname)
     }
   })
-  
-  const upload = multer({ storage: storage })
+ 
+  const fileFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+        cb(null, true); // Accept image files
+    } else {
+        cb(new Error("Please upload an image file"), false); // Reject non-image files
+    }
+  };
+
+  const upload = multer({ 
+    storage: storage ,
+    fileFilter: fileFilter,
+    limits: { fileSize: 10 * 1024 * 1024 }, // Limit to 10MB per file
+  })
 
 // database connection
 connectDb()
+
 
 
 app.get('/', (req,res)=>{
@@ -48,9 +62,12 @@ app.get('/', (req,res)=>{
 app.use('/api/getAllPhotos', userRouter);
 app.use('/api/uploadphoto', userRouter);
 
+app.use(express.urlencoded({ extended: true }));
 // user signup
 app.use('/api',userRouter)
 
+// Serve static files (uploaded images)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(PORT, ()=>{
     console.log(`server is running on ${PORT}`)

@@ -16,9 +16,16 @@ const photographerSchema = new mongoose.Schema({
             required: true 
         },
     profile: {
-           bio: { type: String },
-           age: { type: Number },
+            type: String ,
         },
+    profilePicture: {
+         type: String,
+          default: 'defaultProfilePic.jpg' 
+        },
+       
+    bio:{ 
+          type: String ,
+    }
 });
   
 const Photographer = mongoose.model("Photographer", photographerSchema);

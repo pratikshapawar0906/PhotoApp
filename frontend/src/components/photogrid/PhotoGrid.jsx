@@ -1,30 +1,19 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import "./PhotoGrid.css";
 
-const PhotoGrid = () => {
-  const [photos, setPhotos] = React.useState([]);
-
-  useEffect(() => {
-    getPhotos();
-  }, []);
-
-  const getPhotos = async () => {
-    const response = await axios.get("http://localhost:8000/getAllPhotos");
-    setPhotos(response.data.data);
-    console.log(response.data.data);
-  };
-
+const PhotoGrid = ({ photos }) => {
   return (
-    <>
-      <div className="photo-grid">
-        {photos.map((photo, index) => (
+    <div className="photo-grid">
+      {photos.length > 0 ? (
+        photos.map((photo) => (
           <div className="photo-item" key={photo._id}>
-            <img className="" src={photo.imgUrl} alt="abc" />
+            <img src={photo.imgUrl} alt="Photographer's Work" />
           </div>
-        ))}
-      </div>
-    </>
+        ))
+      ) : (
+        <p>No photos uploaded yet.</p>
+      )}
+    </div>
   );
 };
 

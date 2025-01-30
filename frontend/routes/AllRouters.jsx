@@ -20,8 +20,9 @@ const AllRouters = () => {
         <Route path="/user-profile" element={<GalleryPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/photographerDetails" element={<PhotographerDetails />} />
+        <Route path="/photographerDetails/:id" element={<PhotographerDetails />} />
         <Route path="profile/:userId" element={<Profile />} />
+        
 
         {/* Nested Routes for JoinUsForm */}
         <Route path="/joinUsForm" element={<JoinUsFormLayout />}>

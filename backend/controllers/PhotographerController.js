@@ -35,7 +35,7 @@ exports.login1 = async (req, res) => {
     // Check if the password matches
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Incorrect Password' });
     }
 
     // Generate a JWT token
@@ -83,7 +83,7 @@ exports.register = async (req, res) => {
 
 
 // In your backend (Node.js / Express example)
-exports.user=async (req, res) => {
+exports.user = async (req, res) => {
   const { userId } = req.params;
 
   try {
@@ -91,8 +91,30 @@ exports.user=async (req, res) => {
       if (!user) {
           return res.status(404).json({ message: "User not found" });
       }
-      res.json(user);
+      console.log(user); // Log the user data
+      res.json(user); // Ensure username and bio are part of the response
   } catch (err) {
       res.status(500).json({ message: "Error fetching user profile", error: err.message });
   }
 };
+
+// Update user profile (name and bio)
+exports.updateProfile = async (req, res) => {
+  const { userId, name, bio } = req.body;
+
+  try {
+    const user = await Photographer.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.name = name || user.name;  // Update name if provided
+    user.bio = bio || user.bio;      // Update bio if provided
+
+    await user.save();
+    res.json({ message: "Profile updated successfully", user });
+  } catch (err) {
+    res.status(500).json({ message: "Error updating profile", error: err.message });
+  }
+};
+

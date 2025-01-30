@@ -4,7 +4,7 @@ const multer = require("multer");
 const router = express.Router();
 const PhotoController=require('../controllers/PhotoController')
 const { signup, login } = require('../controllers/UserSignUp');
-const { signup1, login1,  register, user } = require('../controllers/PhotographerController');
+const { signup1, login1,  register, user, updateProfile } = require('../controllers/PhotographerController');
 const Photographer = require('../models/photographSchema');
 
 
@@ -25,6 +25,7 @@ router.post('/signup1', signup1)
 router.post('/login1', login1)
 router.post('/register', register);
 router.get("/user/:userId" ,user)
+router.put("/updateProfile",updateProfile)
 
 router.post("/user/upload", upload.single("photo"), async (req, res) => {
     try {

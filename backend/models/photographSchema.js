@@ -22,7 +22,7 @@ const photographerSchema = new mongoose.Schema({
        
     bio:{ 
           type: String ,
-          default: ''
+          default: ' this is my bio'
     },
     photos: { 
         type: [String], 

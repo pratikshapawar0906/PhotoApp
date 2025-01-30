@@ -6,6 +6,7 @@ const cloudinary = require('cloudinary');
 const userRouter = require("./routes/userRouter");
 const cors = require("cors");
 const connectDb = require("./config/db");
+const Photographer = require("./models/photographSchema");
 
 
 require('dotenv').config();
@@ -68,6 +69,23 @@ app.use('/api',userRouter)
 
 // Serve static files (uploaded images)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.delete('/api/user/deletePhoto', async (req, res) => {
+  const { userId, photoUrl } = req.body;
+
+  try {
+      // Find the user and update their photo list
+      const user = await Photographer.findById(userId);
+      if (!user) return res.status(404).json({ message: "User not found" });
+
+      user.photos = user.photos.filter(photo => photo !== photoUrl);
+      await user.save();
+
+      res.json({ message: "Photo deleted successfully", photos: user.photos });
+  } catch (error) {
+      res.status(500).json({ message: "Error deleting photo", error });
+  }
+});
 
 app.listen(PORT, ()=>{
     console.log(`server is running on ${PORT}`)

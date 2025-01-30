@@ -83,5 +83,18 @@ router.post("/user/uploadProfilePhoto", upload.single("profilePhoto"), async (re
     }
 });
 
+router.get("/user/photos/:userId", async (req, res) => {
+    try {
+      const { userId } = req.params;
+      if (!userId) return res.status(400).json({ message: "User ID is missing" });
+  
+      const user = await Photographer.findById(userId);
+      if (!user) return res.status(404).json({ message: "User not found" });
+  
+      res.json(user.photos);
+    } catch (err) {
+      res.status(500).json({ message: "Error fetching photos", error: err.message });
+    }
+});
 
 module.exports = router;

@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const multer = require("multer");
 const router = express.Router();
-const PhotoController=require('../controllers/PhotoController')
+const {addPhotographer ,uploadPhoto}=require('../controllers/PhotoController')
 const { signup, login } = require('../controllers/UserSignUp');
 const { signup1, login1,  register, user, updateProfile } = require('../controllers/PhotographerController');
 const Photographer = require('../models/photographSchema');
@@ -11,9 +11,6 @@ const Photographer = require('../models/photographSchema');
 
 //Photo upload
 const upload = multer({ dest: "uploads/" });
-
-router.get('/getAllPhotos',PhotoController.getAllPhotos)
-router.post("/uploadphoto", upload.single("file1"), PhotoController.uploadPhoto);
 
 
 // User signUp
@@ -26,6 +23,10 @@ router.post('/login1', login1)
 router.post('/register', register);
 router.get("/user/:userId" ,user)
 router.put("/updateProfile",updateProfile)
+router.get("/uploadPhoto",uploadPhoto)
+router.post("/addPhotographer", upload.fields([{ name: "dp" }, { name: "bg" }]), addPhotographer);
+
+
 
 router.post("/user/upload", upload.single("photo"), async (req, res) => {
     try {

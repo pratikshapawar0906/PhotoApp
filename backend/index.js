@@ -59,9 +59,9 @@ connectDb()
 app.get('/', (req,res)=>{
     res.send('Hello from server')
 })
-// photo upload
-app.use('/api/getAllPhotos', userRouter);
-app.use('/api/uploadphoto', userRouter);
+// // photo upload
+// app.use('/api/getAllPhotos', userRouter);
+// app.use('/api/uploadphoto', userRouter);
 
 app.use(express.urlencoded({ extended: true }));
 // user signup

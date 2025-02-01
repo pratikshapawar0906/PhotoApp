@@ -1,18 +1,17 @@
 import React from "react";
 import "./HightlightedPhotographerCard.css";
 
-
 const HightlightedPhotographerCard = ({ photographer }) => {
   const { name, specialty, joined, dp, bg } = photographer;
 
   return (
     <div className="photographer-card-container">
       <div className="photographer-card-img-container">
-        <img src={bg} alt="Card background" className="img-fluid"  width={285} />
+        <img src={`http://localhost:8000/uploads/${bg}`} alt="Card background" className="img-fluid" width={285} />
       </div>
       <div className="photographer-card-info-container">
         <div className="photographer-card-dp-container">
-          <img src={dp} alt="Photographer" />
+          <img src={`http://localhost:8000/uploads/${dp}`} alt="Photographer" />
         </div>
         <div className="photographer-card-info">
           <p className="name">{name}</p>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./newProfile.css"; // Import CSS for styling
 
 const Profile = () => {
+    const navigate = useNavigate();
     const { userId } = useParams();
     const [user, setUser] = useState(null);
     const [newPhoto, setNewPhoto] = useState(null);
@@ -192,6 +193,10 @@ const Profile = () => {
                     </div>
                 </form>
             )}
+            {/* Add Photographer Button */}
+            <button onClick={() => navigate("/add-photographer")} className="add-photographer-btn">
+                ➕ Add Photographer
+            </button>
 
             <div className="portfolio">
                 <h2>Gallary</h2>

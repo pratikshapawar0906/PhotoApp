@@ -10,6 +10,7 @@ import Photographalogin from "../src/pages/joinUsForm/Phoyographalogin";
 import Profile from "../src/pages/profile/Newprofile";
 import  JoinUsFormLayout from "../src/pages/joinusformLayout/joinLayout"
 import Register from "../src/pages/joinUsForm/register";
+import PhotographerForm from "../src/components/PhotographerForm/photographerForm";
 const AllRouters = () => {
   return (
     <>
@@ -22,6 +23,7 @@ const AllRouters = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/photographerDetails/:id" element={<PhotographerDetails />} />
         <Route path="profile/:userId" element={<Profile />} />
+        <Route path="/add-photographer" element={<PhotographerForm />} />
         
 
         {/* Nested Routes for JoinUsForm */}

@@ -2,11 +2,23 @@ const mongoose=require('mongoose');
 const { type }=require("os")
 
 const photoSchema = new mongoose.Schema({
-    name: String,
-    specialty: String,
-    joined: String,
-    dp: String,
-    bg: String,
+    name: {
+         type: String, 
+         required: true 
+    },
+    specialty: {
+         type: String, 
+         required: true 
+    },
+    joined:{
+        type: String,
+    },
+    dp:[{
+         type: String 
+    }],
+    bg:[{
+         type: String 
+    }],
 })
 
 const Photo = mongoose.model("Photo", photoSchema)

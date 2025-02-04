@@ -193,10 +193,6 @@ const Profile = () => {
                     </div>
                 </form>
             )}
-            {/* Add Photographer Button */}
-            <button onClick={() => navigate("/add-photographer")} className="add-photographer-btn">
-                ➕ Add Photographer
-            </button>
 
             <div className="portfolio">
                 <h2>Gallary</h2>

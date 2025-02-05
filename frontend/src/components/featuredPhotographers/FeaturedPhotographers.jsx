@@ -1,7 +1,6 @@
 import React from "react";
 import "./FeaturedPhotographers.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules"; // Correct import for Swiper modules
 import "swiper/css"; // Base styles
 import { Autoplay } from "swiper/modules";
 import featured1 from "../../assets/featured/fatured1.png";

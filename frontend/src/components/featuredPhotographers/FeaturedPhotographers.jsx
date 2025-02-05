@@ -1,5 +1,5 @@
 import React from "react";
-import "./Featured.css";
+import "./featured.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Base styles
 import { Autoplay } from "swiper/modules";
